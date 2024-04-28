@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "a548dcdc-142d-40f1-b892-237124378faa",
+		"name": "VMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11951392"
+	},
+	"item": [
+		{
+			"name": "create_user_get_token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"rohit2\",\n    \"password\": \"test\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/create_user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"create_user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all vendors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token bcfe969f7ef3d64b741a187a90375923150e706d",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/vendors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create vendors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vendor Name\",\n    \"contact_details\": \"Vendor Contact Details\",\n    \"address\": \"Vendor Address\",\n    \"vendor_code\": \"Unique Vendor Code\",\n    \"on_time_delivery_rate\": 95.5,\n    \"quality_rating_avg\": 4.2,  \n    \"average_response_time\": 24.5, \n    \"fulfillment_rate\": 98.7 \n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/vendors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get vendor by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/vendors/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update vendor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \n    \"name\": \"Vendor2\",\n    \"address\": \"Vendor Address\",\n    \"vendor_code\": \"1234567\",\n    \"phone_number\": null,\n    \"email\": null,\n    \"status\": \"active\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/vendors/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete vendor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/vendors/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all purchase order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/purchase_orders/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create pruchase order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"po_number\": \"567\",\n  \"vendor\": 1,\n  \"order_date\": \"2024-04-27T08:00:00\",\n   \"expected_delivery_date\": \"2024-04-30T08:00:00\",\n  \"actual_delivery_date\": null,\n  \"items\": [\n    {\n      \"name\": \"Item 1\",\n      \"description\": \"Description of item 1\",\n      \"price\": 10.99\n    },\n    {\n      \"name\": \"Item 2\",\n      \"description\": \"Description of item 2\",\n      \"price\": 15.99\n    }\n  ],\n  \"quantity\": 2,\n  \"status\": \"pending\",\n  \"quality_rating\": null,  \n  \"acknowledgment_date\": null\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/purchase_orders/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get purchase order by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/purchase_orders/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update purchase order",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \n        \"po_number\": \"567\",\n        \"order_date\": \"2024-04-27T08:00:00Z\",\n        \"items\": [\n            {\n                \"name\": \"Item 1\",\n                \"description\": \"Description of item 1\",\n                \"price\": 10.99\n            },\n            {\n                \"name\": \"Item 2\",\n                \"description\": \"Description of item 2\",\n                \"price\": 15.99\n            }\n        ],\n        \"quantity\": 2,\n        \"status\": \"completed\",\n        \"quality_rating\": 3,\n        \"issue_date\": \"2024-04-28T04:51:07.932166Z\",\n        \"acknowledgment_date\": \"2024-04-29T04:51:07.932166Z\",\n        \"expected_delivery_date\": \"2024-04-30T08:00:00Z\",\n        \"actual_delivery_date\": \"2024-04-29T08:00:00Z\",\n        \"vendor\": 1\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/purchase_orders/6/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"6",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete purchase order",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/purchase_orders/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get performace by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/vendors/1/performance/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"1",
+						"performance",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update ack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/purchase_orders/567/acknowledge/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"567",
+						"acknowledge",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

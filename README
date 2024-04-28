@@ -1,0 +1,184 @@
+# Vendor Management System (VMS) API
+
+Welcome to the Vendor Management System (VMS) API. This API provides endpoints for managing vendors, purchase orders, and vendor performance metrics.
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rohitdude10/vms-api.git
+
+2. cd vms-api
+3. pip install -r requirements.txt
+4. python manage.py migrate
+5. python manage.py runserver
+6. Access the API at http://localhost:8000/api/
+
+// To run testcases:
+    python manage.py test
+
+// I have added POSTMAN collection of api methods
+
+
+Sure, here's the list of API endpoints:
+
+### Create User
+- **URL:** `/api/create_user/`
+- **Method:** `POST`
+- **Description:** Create a new user and generate a token.
+- **Request Body:**
+  ```json
+  {
+      "username": "your_username",
+      "password": "your_password"
+  }
+
+### Vendors
+
+- **GET /api/vendors/**
+  - Method: GET
+    Description: Retrieve a list of all vendors.
+    Response:
+    Status Code: 200 OK
+    Body: Array of vendor objects.
+  
+- **POST /api/vendors/**
+  - Method: POST
+    Description: Create a new vendor.
+    Request Body:    
+    {
+        "name": "Vendor Name",
+        "contact_details": "Contact details of the vendor",
+        "address": "Address of the vendor",
+        "vendor_code": "Vendor code"
+    }
+
+- **GET /api/vendors/{vendor_id}/**
+  - Method: GET
+    Description: Retrieve details of a specific vendor.
+    Response:
+    Status Code: 200 OK
+    Body: Vendor object.
+
+- **PUT /api/vendors/{vendor_id}/**
+  - Method: PUT
+    Description: Update details of a specific vendor.
+    Request Body: Updated vendor object.
+    Response:
+    Status Code: 200 OK
+    Body: Updated vendor object.
+
+- **DELETE /api/vendors/{vendor_id}/**
+  - Method: DELETE
+    Description: Delete a specific vendor.
+    Response:
+    Status Code: 204 NO CONTENT
+
+### Purchase Orders
+
+- **GET /api/purchase_orders/**
+  - Method: GET
+    Description: Retrieve a list of all purchase orders.
+    Response:
+    Status Code: 200 OK
+    Body: Array of purchase order objects.
+  
+- **POST /api/purchase_orders/**
+  - Method: POST
+    Description: Create a new purchase order.
+    Request Body:
+    json    
+    {
+        "vendor": "Vendor ID",
+        "order_date": "Order date",
+        "items": "Items details",
+        "quantity": "Quantity of items",
+        "status": "Status of the purchase order"
+        // Add other fields as needed
+    }
+    Response:
+    Status Code: 201 CREATED
+    Body: Created purchase order object.
+
+- **GET /api/purchase_orders/{po_id}/**
+  - Method: GET
+    Description: Retrieve details of a specific purchase order.
+    Response:
+    Status Code: 200 OK
+    Body: Purchase order object.
+
+- **PUT /api/purchase_orders/{po_id}/**
+    Method: PUT
+    Description: Update details of a specific purchase order.
+    Request Body: Updated purchase order object.
+    Response:
+    Status Code: 200 OK
+    Body: Updated purchase order object.
+
+- **DELETE /api/purchase_orders/{po_id}/**
+  - Method: DELETE
+    Description: Delete a specific purchase order.
+    Response:
+    Status Code: 204 NO CONTENT
+
+### Vendor Performance Metrics
+
+- **GET /api/vendors/{vendor_id}/performance/**
+  - Method: GET
+    Description: Retrieve performance metrics for a specific vendor.
+    Response:
+    Status Code: 200 OK
+    Body: Vendor performance metrics.
+
+### Acknowledge Purchase Order
+
+- **POST /api/purchase_orders/{po_id}/acknowledge/**
+  - Method: POST
+    Description: Acknowledge a specific purchase order.
+    Response:
+    Status Code: 200 OK
+    Body: Acknowledged purchase order object.
+
+This list provides a quick overview of all the available API endpoints along with their descriptions. Let me know if you need further assistance!
+
+
+
+# Running the Application with Docker
+
+## Prerequisites
+- Docker installed on your machine. You can download and install Docker from [here](https://www.docker.com/get-started).
+
+## Steps to Run the Application
+
+1. Clone the repository to your local machine:
+
+    ```bash
+    git clone https://github.com/rohitdude10/vms-api.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd <project_directory>
+    ```
+
+3. Build the Docker image:
+
+    ```bash
+    docker build -t vms_project .
+    ```
+
+4. Run the Docker container:
+
+    ```bash
+    docker run -p 8000:8000 vms_project
+    ```
+
+5. Once the container is running, you can access the API endpoints at [http://localhost:8000/api/](http://localhost:8000/api/).
+
+## Notes
+- Replace `<repository_url>` with the URL of your repository and `<project_directory>` with the name of your project directory.
+- The `-t` option in the `docker build` command tags the image with a name (`vms_project` in this case).
+- The `-p` option in the `docker run` command maps port 8000 of the container to port 8000 of the host machine.
+- You can use `docker ps` command to verify that the container is running.
+- To stop the container, you can use `docker stop <container_id>` command, where `<container_id>` is the ID of the running container obtained from `docker ps`.
